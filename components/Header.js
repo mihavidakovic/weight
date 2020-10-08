@@ -9,7 +9,7 @@ export default function Header() {
 				</div>
 				<div className="nav">
 					<span className="active">Domov</span>
-					<span>Dodaj </span>
+					<span>Dodaj</span>
 				</div>
 			</div>
 		</header>
