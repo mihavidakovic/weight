@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import Graph from '../components/graph';
+import Graph from '../components/Graph';
 
 export default function Home() {
 
