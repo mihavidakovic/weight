@@ -1,0 +1,44 @@
+.header {
+	padding: rem(18) 0;
+	background-color: rgba(#000, 0.85);
+	margin-bottom: rem(32);
+	
+	.container {
+		display: flex;
+		flex-flow: row;
+		align-items: center;
+		justify-content: space-between;
+		
+		.logo {
+			color: #FFF;
+			font-weight: 900;
+		}
+
+		.nav {
+			display: flex;
+			flex-flow: row;
+			align-items: center;
+			
+			span {
+				color: rgba(#fff, 0.8);
+				cursor: pointer;
+				font-size: rem(10);
+				font-weight: 600;
+				text-transform: uppercase;
+				
+				&:hover {
+					color: #FFF;
+				}
+				
+				&.active {
+					font-weight: 800;
+					color: #FFF;
+				}
+				
+				&:not(:last-child) {
+					margin-right: rem(18);
+				}
+			}
+		}
+	}
+}
