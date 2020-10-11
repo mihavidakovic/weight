@@ -6,7 +6,7 @@
 		flex-flow: column;
 		
 		@include breakpoint(md) {
-			flex-flow: row;
+			flex-flow: row-reverse;
 		}
 
 		.graph {

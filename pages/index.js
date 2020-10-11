@@ -15,11 +15,11 @@ export default function Home() {
 
 			<main className="home">
 				<div className="container">
-					<div className="graph">
-						<Graph />
-					</div>
 					<div className="add">
 						<Add />
+					</div>
+					<div className="graph">
+						<Graph />
 					</div>
 				</div>
 			</main>
