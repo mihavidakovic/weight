@@ -41,8 +41,12 @@
 				}
 				
 				.record__info {
-					display: flex;
+					display: none;
 					flex-flow: column;
+					
+					&.visible {
+						display: flex;
+					}
 					
 					.record__weight {
 						font-weight: bold;
@@ -53,6 +57,20 @@
 					.record__time {
 						font-size: 0.75rem;
 						color: rgba(#000, 0.5);
+					}
+				}
+
+				.record__edit {
+					display: none;
+					flex-flow: column;
+					
+					&.visible {
+						display: flex;
+					}
+
+					input {
+						font-size: 0.8rem;
+						padding: 0.2rem;
 					}
 				}
 

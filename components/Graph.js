@@ -44,7 +44,7 @@ function Graph() {
         label: 'kg',
         data: weights,
         fill: true,
-        lineTension: 0.5,
+        lineTension: 0,
         backgroundColor: 'rgba(32, 112, 229, 0.2)',
         borderColor: 'rgba(32, 112, 229, 0.6)',
         borderCapStyle: 'butt',

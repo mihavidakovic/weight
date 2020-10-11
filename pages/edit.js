@@ -4,6 +4,8 @@ import dayjs from "dayjs"
 require('dayjs/locale/sl')
 import { FaTrash, FaPen } from 'react-icons/fa';
 
+import Record from "../components/Record"
+
 export default function Edit() {
   const [weights, setWeights] = useState();
 
@@ -58,16 +60,7 @@ export default function Edit() {
 						<div className="records">
 							{weights.map((record, i) => {
 								return (
-									<div className="record" key={i}>
-										<div className="record__info">
-											<span className="record__weight">{record.weight} kg</span>
-											<span className="record__time">{dayjs(record.created_at).locale("sl").format("D. MMM YYYY H:mm")}</span>
-										</div>
-										<div className="record__actions">
-											<FaPen className="action action__edit" />
-											<FaTrash className="action action__delete" onClick={() => deleteRecord(record._id)} />
-										</div>
-									</div>
+									<Record data={record} key={i} />
 								)
 							})}
 						</div>
