@@ -3,13 +3,18 @@
 
 // Abstracts
 @import "abstracts/mixins.scss";
-@import "abstracts/base.scss";
 @import "abstracts/functions.scss";
 @import "abstracts/variables.scss";
+@import "abstracts/base.scss";
 
 // Components
 @import "components/container.scss";
 @import "components/header.scss";
+@import "components/add.scss";
+@import "components/button.scss";
+@import "components/input.scss";
+@import "components/message.scss";
 
 // Pages
 @import "pages/index.scss";
+@import "pages/edit.scss";

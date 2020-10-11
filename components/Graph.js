@@ -6,9 +6,8 @@ function Graph() {
   const [weights, setWeights] = useState();
   const [dates, setDates] = useState();
 
-  useEffect(() => {
-
-    fetch("/api/weights")
+  function fetchData() {
+     fetch("/api/weights")
       .then( response => {
         if (!response.ok) { throw response }
         return response.json()  //we only get here if there is no error
@@ -32,8 +31,11 @@ function Graph() {
       .catch( err => {
         console.log(err)
       });
+  }
 
-  }, [setWeights])
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   if (weights && dates) {
     const data = {
@@ -42,27 +44,29 @@ function Graph() {
         label: 'kg',
         data: weights,
         fill: true,
-        lineTension: 0.3,
-        backgroundColor: 'rgba(75,192,192,0.4)',
-        borderColor: 'rgba(75,192,192,1)',
+        lineTension: 0.5,
+        backgroundColor: 'rgba(32, 112, 229, 0.2)',
+        borderColor: 'rgba(32, 112, 229, 0.6)',
         borderCapStyle: 'butt',
         borderDash: [],
         borderDashOffset: 1,
+        borderWeight: 3,
         borderJoinStyle: 'miter',
-        pointBorderColor: 'rgba(75,192,192,1)',
+        pointBorderColor: 'rgba(32, 112, 229, 1)',
         pointBackgroundColor: '#fff',
-        pointBorderWidth: 2,
+        pointBorderWidth: 1,
         pointHoverRadius: 5,
-        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-        pointHoverBorderColor: 'rgba(220,220,220,1)',
+        pointHoverBackgroundColor: 'rgba(32, 112, 229, 1)',
+        pointHoverBorderColor: 'rgba(32, 112, 229, 1)',
         pointHoverBorderWidth: 2,
-        pointRadius: 3,
+        pointRadius: 4,
         pointHitRadius: 30
       }]
     }
 
     return (
       <div>
+        <h2>Weight graph</h2>
         <Line
           data={data}
           height={300}

@@ -1,15 +1,29 @@
-export default function Header() {
+import Link from 'next/link'
+import { useRouter } from "next/router";
 
+
+export default function Header() {
+	const router = useRouter();
 
 	return (
 		<header className="header">
 			<div className="container">
 				<div className="logo">
-					<span>WeightApp</span>
+					<Link href="/">
+						<span>WeightApp</span>
+					</Link>
 				</div>
 				<div className="nav">
-					<span className="active">Domov</span>
-					<span>Dodaj</span>
+					<Link href="/">
+						<span className={router.pathname == "/" ? "active" : ""}>
+							Home
+						</span>
+					</Link>
+					<Link href="/edit">
+						<span className={router.pathname == "/edit" ? "active" : ""}>
+							Edit
+						</span>
+					</Link>
 				</div>
 			</div>
 		</header>

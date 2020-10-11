@@ -1,0 +1,80 @@
+.edit {
+	margin-top: $global-margin * 4;
+	
+	.container {
+		display: flex;
+		flex-flow: column;
+		
+		.records {
+			display: flex;
+			flex-flow: row;
+			flex-wrap: wrap;
+			margin-bottom: $global-margin * 2;
+			
+			.record {
+				padding: $global-padding;
+				background-color: #FFF;
+				width: 100%;
+				display: flex;
+				flex-flow: row;
+				align-items: center;
+				justify-content: space-between;
+				border-radius: 4px;
+				margin: 0 0 $global-margin 0;
+				
+				@include breakpoint(md) {
+					width: calc(50% - 1rem);
+					margin: 0 $global-margin $global-margin 0;
+					
+					&:nth-child(even) {
+						margin-right: 0;
+					}
+				}
+
+				@include breakpoint(lg) {
+					width: 20%;
+					margin: 0 $global-margin $global-margin 0;
+					
+					&:nth-child(even) {
+						margin-right: 1rem;
+					}
+				}
+				
+				.record__info {
+					display: flex;
+					flex-flow: column;
+					
+					.record__weight {
+						font-weight: bold;
+						font-size: 1.1rem;
+						margin-bottom: $global-margin / 2;
+					}
+
+					.record__time {
+						font-size: 0.75rem;
+						color: rgba(#000, 0.5);
+					}
+				}
+
+				.record__actions {
+					display: flex;
+					flex-flow: row;
+					
+					.action {
+						font-size: 0.8rem;
+						cursor: pointer;
+						
+						&.action__edit {
+							margin-right: 0.8rem;
+							color: rgba($primary-color, 0.8);
+						}
+
+						&.action__delete {
+							color: rgba(210, 10, 20, 0.8);
+						}
+					}
+				}
+			}
+		}
+	}
+}

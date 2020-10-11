@@ -10,7 +10,7 @@ export default async (req, res) => {
 	switch (method) {
 		case "GET":
 			try {
-				const weights = await Weight.find({}).sort({created_at: 1});
+				const weights = await Weight.find({}).sort({created_at: -1});
 				res.status(200).json({success: true, data: weights})
 			} catch(e) {
 				res.status(400).json({success: false, error: e})

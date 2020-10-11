@@ -1,23 +1,28 @@
 import Head from 'next/head'
 
 import Graph from '../components/Graph';
+import Add from '../components/Add';
 
 export default function Home() {
 
 
-    return (
-      <div className="container">
-        <Head>
-          <title>Weight</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
+	return (
+		<>
+			<Head>
+				<title>Weight</title>
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
 
-        <main>
-          <div className="container">
-            <Graph />
-          </div>
-        </main>
-
-      </div>
-  )
+			<main className="home">
+				<div className="container">
+					<div className="graph">
+						<Graph />
+					</div>
+					<div className="add">
+						<Add />
+					</div>
+				</div>
+			</main>
+		</>
+	)
 }
