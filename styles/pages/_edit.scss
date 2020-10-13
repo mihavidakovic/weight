@@ -25,6 +25,13 @@
 				justify-content: space-between;
 				border-radius: 4px;
 				margin: 0 0 $global-margin 0;
+				transition: 200ms all ease-in-out;
+				box-shadow: 0 2px 2px 0 rgba(#000, 0.05);
+				
+				&:hover {
+					box-shadow: 0 4px 10px 0 rgba(#000, 0.1);
+					transform: scale(1.05) translateY(-0.1rem);
+				}
 				
 				@include breakpoint(md) {
 					width: calc(50% - 1rem);
@@ -67,6 +74,8 @@
 				.record__edit {
 					display: none;
 					flex-flow: column;
+					width: 100%;
+					margin-right: 1rem;
 					
 					&.visible {
 						display: flex;
@@ -81,18 +90,27 @@
 				.record__actions {
 					display: flex;
 					flex-flow: row;
+					flex-shrink: 0;
 					
 					.action {
-						font-size: 0.8rem;
+						font-size: 1rem;
 						cursor: pointer;
 						
 						&.action__edit {
-							margin-right: 0.8rem;
-							color: rgba($primary-color, 0.8);
+							margin-right: 1rem;
+							color: rgba(#000, 0.7);
+							
+							&:hover {
+								color: rgba(#000, 0.95);
+							}
 						}
 
 						&.action__delete {
-							color: rgba(210, 10, 20, 0.8);
+							color: rgba(210, 10, 20, 0.7);
+							
+							&:hover {
+								color: rgba(210, 10, 20, 0.95);
+							}
 						}
 					}
 				}

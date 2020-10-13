@@ -3,6 +3,8 @@ import { useState, setState, useEffect } from "react";
 import dayjs from "dayjs"
 require('dayjs/locale/sl')
 import { FaTrash, FaPen } from 'react-icons/fa';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 import Record from "../components/Record"
 
@@ -71,7 +73,13 @@ export default function Edit() {
 	} else {
 		return(
 			<>
-				<span>Loading</span>
+				<Loader
+					className="loading__spinner"
+					type="Rings"
+					color="#888"
+					height={100}
+					width={100}
+				/>
 			</>
 		)
 	}

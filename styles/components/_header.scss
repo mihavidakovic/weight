@@ -1,11 +1,15 @@
 .header {
 	padding: rem(18) 0;
-	background-color: rgba(#000, 0.85);
+	background-color: rgba(#000, 0.8);
 	margin-bottom: rem(32);
 	position: fixed;
 	width: 100%;
 	left: 0;
 	top: 0;
+	z-index: 999;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	box-shadow: 0 2px 10px 0 rgba(#000, 0.3);
 	
 	.container {
 		display: flex;

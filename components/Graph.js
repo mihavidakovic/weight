@@ -1,6 +1,8 @@
 import { useState, setState, useEffect } from "react";
 import {Line} from 'react-chartjs-2';
 import dayjs from "dayjs"
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 function Graph() {
   const [weights, setWeights] = useState();
@@ -48,18 +50,6 @@ function Graph() {
         backgroundColor: 'rgba(32, 112, 229, 0.2)',
         borderColor: 'rgba(32, 112, 229, 0.6)',
         borderCapStyle: 'butt',
-        borderDash: [],
-        borderDashOffset: 1,
-        borderWeight: 3,
-        borderJoinStyle: 'miter',
-        pointBorderColor: 'rgba(32, 112, 229, 1)',
-        pointBackgroundColor: '#fff',
-        pointBorderWidth: 1,
-        pointHoverRadius: 5,
-        pointHoverBackgroundColor: 'rgba(32, 112, 229, 1)',
-        pointHoverBorderColor: 'rgba(32, 112, 229, 1)',
-        pointHoverBorderWidth: 2,
-        pointRadius: 4,
         pointHitRadius: 30
       }]
     }
@@ -79,9 +69,15 @@ function Graph() {
 
   } else {
     return (
-    <>
-      <p>nothing</p>
-    </>
+    <div style={{width: "100%", height: "350px", position: "relative"}}>
+      <Loader
+        className="loading__spinner"
+        type="Rings"
+        color="#888"
+        height={100}
+        width={100}
+        />
+    </div>
     )
   }
 }
