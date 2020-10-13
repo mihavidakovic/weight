@@ -11,6 +11,10 @@
 			flex-wrap: wrap;
 			margin-bottom: $global-margin * 2;
 			
+			@include breakpoint(md) {
+				flex-wrap: wrap;
+			}
+			
 			.record {
 				padding: $global-padding;
 				background-color: #FFF;
