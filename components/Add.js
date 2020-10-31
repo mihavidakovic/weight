@@ -43,8 +43,8 @@ export default function Add() {
 
 	return (
 		<>
-			<h2>Add weight</h2>
-			<div class="add__form">
+			<h3>Add weight</h3>
+			<div className="add__form">
 				<input type="number" value={weight} placeholder="96kg" className="input" onChange={handleChange} />
 				<div className="btn btn-primary" onClick={() => submit(weight)}>
 					Add

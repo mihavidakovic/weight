@@ -4,40 +4,23 @@ import dayjs from "dayjs"
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 
-function Graph() {
+function Graph(props) {
   const [weights, setWeights] = useState();
   const [dates, setDates] = useState();
 
-  function fetchData() {
-     fetch("/api/weights")
-      .then( response => {
-        if (!response.ok) { throw response }
-        return response.json()  //we only get here if there is no error
-      })
-      .then( json => {
-        let newWeights = [];
-        for (var i = json.data.length - 1; i >= 0; i--) {
-          newWeights.push(Object.values(json.data[i])[1])
-        }
-        setWeights(newWeights)
-
-        let newDates = [];
-        for (var i = json.data.length - 1; i >= 0; i--) {
-          newDates.push(dayjs(Object.values(json.data[i])[2]).format("D. M."))
-        }
-        setDates(newDates)
-
-
-
-      })
-      .catch( err => {
-        console.log(err)
-      });
-  }
-
   useEffect(() => {
-    fetchData()
-  }, [])
+      let newWeights = [];
+      for (var i = props.data.length - 1; i >= 0; i--) {
+        newWeights.push(Object.values(props.data[i])[1])
+      }
+      setWeights(newWeights)
+
+      let newDates = [];
+      for (var i = props.data.length - 1; i >= 0; i--) {
+        newDates.push(dayjs(Object.values(props.data[i])[2]).format("D. M."))
+      }
+      setDates(newDates)
+}, [])
 
   if (weights && dates) {
     const data = {
@@ -56,7 +39,7 @@ function Graph() {
 
     return (
       <div>
-        <h2>Weight graph</h2>
+        <h3>Weight graph</h3>
         <Line
           data={data}
           height={300}
