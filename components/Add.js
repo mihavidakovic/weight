@@ -1,7 +1,7 @@
 import { useState, setState, useEffect } from "react";
 import Message from './Message';
 
-export default function Add() {
+export default function Add(props) {
 	const [weight, setWeight] = useState("");
 	const [addedWeight, setAddedWeight] = useState(0);
 	const [status, setStatus] = useState(false);
@@ -24,7 +24,6 @@ export default function Add() {
 				return response.json()
 			})
 			.then( json => {
-				console.log(json)
 				setWeight("")
 				setAddedWeight(number)
 				setStatus(true)
@@ -41,16 +40,25 @@ export default function Add() {
 		setWeight(event.target.value)
 	}
 
+	function handleAdded() {
+		props.isAdded()
+	}
+
 	return (
 		<>
 			<h3>Add weight</h3>
 			<div className="add__form">
-				<input type="number" value={weight} placeholder="96kg" className="input" onChange={handleChange} />
-				<div className="btn btn-primary" onClick={() => submit(weight)}>
-					Add
+				<div class="form">
+					<input type="number" value={weight} placeholder="96kg" className="input" onChange={handleChange} />
+					<div className="btn btn-primary" onClick={() => {
+						submit(weight)
+						handleAdded()
+					}}>
+						Add
+					</div>
 				</div>
+				<Message type="success" number={addedWeight} visible={status} />
 			</div>
-			<Message type="success" number={addedWeight} visible={status} />
 		</>
 	)
 }

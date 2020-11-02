@@ -27,6 +27,10 @@ export default function Home() {
 		fetchData()
 	}, [])
 
+	function handleAdd() {
+		fetchData()
+	}
+
 
 	if (data) {
 		return (
@@ -47,14 +51,14 @@ export default function Home() {
 				<main className="home">
 					<div className="container">
 						<div className="add">
-							<Add />
+							<Add isAdded={handleAdd} />
 						</div>
 						<div className="main">
 							<div className="statistics">
 								<Statistics data={data} />
 							</div>
 							<div className="graph">
-								<Graph data={data} />
+								<Graph className="graph__box" data={data} />
 							</div>
 						</div>
 					</div>

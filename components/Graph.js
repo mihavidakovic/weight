@@ -20,7 +20,8 @@ function Graph(props) {
         newDates.push(dayjs(Object.values(props.data[i])[2]).format("D. M."))
       }
       setDates(newDates)
-}, [])
+      console.log(props.data)
+}, [props.data])
 
   if (weights && dates) {
     const data = {
@@ -38,16 +39,19 @@ function Graph(props) {
     }
 
     return (
-      <div>
+      <>
         <h3>Weight graph</h3>
-        <Line
-          data={data}
-          height={300}
-          options={{
-            maintainAspectRatio: false,
-          }}
-        />
-      </div>
+        <div className="graph__box">
+          <Line
+            data={data}
+            height={400}
+            options={{
+              maintainAspectRatio: false,
+            }}
+            className="graph__box"
+          />
+        </div>
+      </>
     );
 
   } else {

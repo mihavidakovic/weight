@@ -4,15 +4,27 @@
 	
 	.add__form {
 		display: flex;
-		flex-flow: row;
-		
-		.input {
-			margin-right: $global-margin;
-			width: 100%;
-		}
+		flex-flow: column;
+		background-color: #fff;
+		box-shadow: 
+			0 2px 4px 0 rgba(#000, 0.05),
+			0 4px 15px 0 rgba(#000, 0.06);
+		padding: $global-padding;
+		border-radius: 6px;
 
-		.btn {
-			flex-shrink: 0;
+		.form {
+			display: flex;
+			flex-flow: row;
+			width: 100%;
+			
+			.input {
+				margin-right: $global-margin;
+				width: 100%;
+			}
+	
+			.btn {
+				flex-shrink: 0;
+			}
 		}
 	}
 }

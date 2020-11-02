@@ -6,6 +6,8 @@
 		flex-flow: column;
 		
 		.records {
+			width: calc(100% + 1rem);
+			margin-left: -0.5rem;
 			display: flex;
 			flex-flow: row;
 			flex-wrap: wrap;
@@ -16,40 +18,36 @@
 			}
 			
 			.record {
-				padding: $global-padding;
-				background-color: #FFF;
 				width: 100%;
-				display: flex;
-				flex-flow: row;
-				align-items: center;
-				justify-content: space-between;
-				border-radius: 4px;
-				margin: 0 0 $global-margin 0;
-				transition: 200ms all ease-in-out;
-				box-shadow: 0 2px 2px 0 rgba(#000, 0.05);
-				
-				&:hover {
-					box-shadow: 0 4px 10px 0 rgba(#000, 0.1);
-				}
-				
+				padding: 0.5rem;
+
 				@include breakpoint(md) {
-					width: calc(50% - 1rem);
-					margin: 0 $global-margin $global-margin 0;
-					
-					&:nth-child(even) {
-						margin-right: 0;
-					}
+					width: 50%;
 				}
 
 				@include breakpoint(lg) {
-					width: 20%;
-					margin: 0 $global-margin $global-margin 0;
-					
-					&:nth-child(even) {
-						margin-right: 1rem;
-					}
+					width: 25%;
 				}
 				
+				&:hover {
+
+					.record__box {
+						box-shadow: 0 4px 10px 0 rgba(#000, 0.1);
+					}
+				}
+
+				.record__box {
+					padding: $global-padding;
+					background-color: #FFF;
+					display: flex;
+					flex-flow: row;
+					align-items: center;
+					justify-content: space-between;
+					border-radius: 4px;
+					transition: 200ms all ease-in-out;
+					box-shadow: 0 2px 2px 0 rgba(#000, 0.05);	
+				}
+
 				.record__info {
 					display: none;
 					flex-flow: column;

@@ -19,12 +19,27 @@
 		
 		.logo {
 			color: #FFF;
-			font-weight: 900;
 			cursor: pointer;
 			-webkit-user-select: none;
 			   -moz-user-select: none;
 			    -ms-user-select: none;
-			        user-select: none;
+					user-select: none;
+			
+			.logo__content {
+				display: flex;
+				flex-flow: row;
+				align-items: center;
+				
+				svg {
+					margin-right: $global-margin / 3;
+					font-size: 1.5rem;
+					font-weight: 300;
+				}
+
+				span {
+					font-weight: 900;
+				}
+			}
 		}
 
 		.nav {

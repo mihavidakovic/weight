@@ -27,11 +27,21 @@
 
 			.graph {
 				width: 100%;
+				margin-bottom: $global-margin * 2;
+
+				.graph__box {
+					background-color: #fff;
+					box-shadow: 
+						0 2px 4px 0 rgba(#000, 0.05),
+						0 4px 15px 0 rgba(#000, 0.06);
+					padding: $global-padding;
+					border-radius: 6px;
+				}
 			}
 
 			.statistics {
 				width: 100%;
-				margin-bottom: $global-margin;
+				margin-bottom: $global-margin * 2;
 			}
 		}
 

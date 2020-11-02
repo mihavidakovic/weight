@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from "next/router";
+import { FaBalanceScale, FaBalanceScaleLeft } from 'react-icons/fa';
+import { RiScales2Line } from 'react-icons/ri';
 
 
 export default function Header() {
@@ -10,7 +12,10 @@ export default function Header() {
 			<div className="container">
 				<div className="logo">
 					<Link href="/">
-						<span>WeightApp</span>
+						<div className="logo__content">
+							<RiScales2Line></RiScales2Line>
+							<span>WeightApp</span>
+						</div>
 					</Link>
 				</div>
 				<div className="nav">

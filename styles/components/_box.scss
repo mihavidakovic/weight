@@ -1,12 +1,15 @@
 .boxes {
     display: flex;
-    flex-flow: row;
-    align-items: center;
+    flex-flow: column;
     justify-content: start;
     user-select: none;
 
+    @include breakpoint(lg) {
+        flex-flow: row;
+    }
+
     .box {
-        width: 33.333%;
+        width: 100%;
         background-color: #fff;
         box-shadow: 
             0 2px 4px 0 rgba(#000, 0.05),
@@ -14,23 +17,35 @@
         padding: $global-padding * 2 $global-padding * 2;
         display: flex;
         flex-flow: column;
+        align-items: center;
+        justify-content: center;
         text-align: center;
         border-radius: 6px;
 
         &:not(:last-of-type) {
-            margin-right: $global-margin;
+            margin-bottom: $global-margin;
+            margin-right: 0;
         }
+
+        @include breakpoint(lg) {
+            width: 33.333%;
+
+                &:not(:last-of-type) {
+                    margin-right: $global-margin;
+                    margin-bottom: 0;
+                }
+            }
     
         .box__title {
             font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: $global-margin / 2;
+            font-size: 1.4rem;
+            margin-bottom: $global-margin / 3;
         }
     
         .box__subtitle {
             font-weight: 400;
-            font-size: 0.9rem;
-            color: rgba(#000, 0.7);
+            font-size: 0.75rem;
+            color: rgba(#000, 0.55);
         }
     }
 }
