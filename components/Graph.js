@@ -9,7 +9,7 @@ function Graph(props) {
   const [dates, setDates] = useState();
 
   useEffect(() => {
-      let newWeights = [];
+    let newWeights = [];
       for (var i = props.data.length - 1; i >= 0; i--) {
         newWeights.push(Object.values(props.data[i])[1])
       }
@@ -47,6 +47,11 @@ function Graph(props) {
             height={400}
             options={{
               maintainAspectRatio: false,
+              trendlineLinear: {
+                style: "rgba(255,105,180, .8)",
+                lineStyle: "solid",
+                width: 2
+              }
             }}
             className="graph__box"
           />

@@ -1,10 +1,11 @@
 import { useState, setState, useEffect } from "react";
 import Head from 'next/head'
+import Loader from "react-loader-spinner";
 
 import Graph from '../components/Graph';
 import Add from '../components/Add';
 import Statistics from '../components/Statistics';
-import Loader from "react-loader-spinner";
+import Records from "../components/Records";
 
 export default function Home() {
 	const [data, setData] = useState();
@@ -50,8 +51,9 @@ export default function Home() {
 
 				<main className="home">
 					<div className="container">
-						<div className="add">
+						<div className="sidebar">
 							<Add isAdded={handleAdd} />
+							<Records data={data} />
 						</div>
 						<div className="main">
 							<div className="statistics">

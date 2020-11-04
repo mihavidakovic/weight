@@ -1,11 +1,50 @@
 .boxes {
     display: flex;
     flex-flow: column;
-    justify-content: start;
+    justify-content: flex-start;
     user-select: none;
+    margin-bottom: $global-margin;
+    position: relative;
 
     @include breakpoint(lg) {
         flex-flow: row;
+    }
+
+    &.boxes__two {
+        flex-flow: row;
+
+        .box {
+            padding: $global-padding $global-padding * 2;
+            width: 50%;
+
+            &:not(:last-of-type) {
+                margin-right: $global-margin;
+                margin-bottom: 0;
+            }
+
+            @include breakpoint(lg) {
+                width: 50%;
+            }
+
+            .box__title {
+                font-size: 1rem;
+            }
+
+            .box__subtitle {
+                font-size: 0.7rem;
+            }
+
+        }
+    }
+
+    &.boxes__three {
+
+        .box {
+            @include breakpoint(lg) {
+                width: 33.3333%;
+            }
+
+        }
     }
 
     .box {
@@ -28,7 +67,6 @@
         }
 
         @include breakpoint(lg) {
-            width: 33.333%;
 
                 &:not(:last-of-type) {
                     margin-right: $global-margin;
@@ -47,5 +85,19 @@
             font-size: 0.75rem;
             color: rgba(#000, 0.55);
         }
+    }
+
+    .box__icon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+        color: #ddd;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: $global-padding / 4;
     }
 }

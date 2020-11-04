@@ -7,6 +7,7 @@ import ContentEditable from 'react-contenteditable'
 
 export default function Record(props) {
 	const [isEditing, setIsEditing] = useState(false);
+	const [isDeleted, setIsDeleted] = useState(false);
 	const [data, setData] = useState();
 	const weightRef = useRef(null);
 	const timeRef = useRef(null);
@@ -21,7 +22,7 @@ export default function Record(props) {
 				return response.json()
 			})
 			.then(json => {
-				console.log(json)
+				setIsDeleted(true)
 			})
 			.catch(err => {
 				console.log(err)
@@ -69,8 +70,8 @@ export default function Record(props) {
 	if (data) {
 		return (
 			<>
-				<div className="record">
-					<div class="record__box">
+				<div className={isDeleted ? "record hidden" : "record"}>
+					<div className="record__box">
 						<div className={isEditing ? "record__info" : "record__info visible"}>
 							<span className="record__weight">{data.weight} kg</span>
 							<span className="record__time">{dayjs(data.created_at).locale("sl").format("D. MMM YYYY H:mm")}</span>

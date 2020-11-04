@@ -45,10 +45,10 @@ export default function Add(props) {
 	}
 
 	return (
-		<>
+		<div className="add">
 			<h3>Add weight</h3>
 			<div className="add__form">
-				<div class="form">
+				<div className="form">
 					<input type="number" value={weight} placeholder="96kg" className="input" onChange={handleChange} />
 					<div className="btn btn-primary" onClick={() => {
 						submit(weight)
@@ -59,7 +59,7 @@ export default function Add(props) {
 				</div>
 				<Message type="success" number={addedWeight} visible={status} />
 			</div>
-		</>
+		</div>
 	)
 }
 
