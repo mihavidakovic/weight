@@ -1,10 +1,11 @@
 import { useState, setState, useEffect } from "react";
 import Head from 'next/head'
+import Loader from "react-loader-spinner";
 
 import Graph from '../components/Graph';
 import Add from '../components/Add';
 import Statistics from '../components/Statistics';
-import Loader from "react-loader-spinner";
+import Records from "../components/Records";
 
 export default function Home() {
 	const [data, setData] = useState();
@@ -27,6 +28,10 @@ export default function Home() {
 		fetchData()
 	}, [])
 
+	function handleAdd() {
+		fetchData()
+	}
+
 
 	if (data) {
 		return (
@@ -44,17 +49,18 @@ export default function Home() {
 					<meta name="theme-color" content="#222222" />
 				</Head>
 
-				<main className="home">
-					<div className="container">
-						<div className="add">
-							<Add />
+				<main className="mt-20">
+					<div className="container flex flex-col lg:flex-row-reverse">
+						<div className="sidebar w-full lg:w-2/5 ml-4 lg:ml-4">
+							<Add isAdded={handleAdd} />
+							<Records data={data} />
 						</div>
-						<div className="main">
+						<div className="main w-full mr-4 lg:ml-0">
 							<div className="statistics">
 								<Statistics data={data} />
 							</div>
 							<div className="graph">
-								<Graph data={data} />
+								<Graph className="graph__box" data={data} />
 							</div>
 						</div>
 					</div>

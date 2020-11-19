@@ -6,6 +6,7 @@ import { FaTrash, FaPen, FaCheck } from 'react-icons/fa';
 import ContentEditable from 'react-contenteditable'
 
 export default function Record(props) {
+	const [isDeleted, setIsDeleted] = useState(false);
 	const [isEditing, setIsEditing] = useState(false);
 	const [data, setData] = useState();
 	const weightRef = useRef(null);
@@ -47,7 +48,6 @@ export default function Record(props) {
 				return response.json()
 			})
 			.then(json => {
-				console.log(json)
 				setIsEditing(false)
 			})
 			.catch(err => {
@@ -69,25 +69,27 @@ export default function Record(props) {
 	if (data) {
 		return (
 			<>
-				<div className="record">
-					<div className={isEditing ? "record__info" : "record__info visible"}>
-						<span className="record__weight">{data.weight} kg</span>
-						<span className="record__time">{dayjs(data.created_at).locale("sl").format("D. MMM YYYY H:mm")}</span>
-					</div>
-					<div className={isEditing ? "record__edit visible" : "record__edit"}>
-					<ContentEditable className="record__weight" ref={weightRef} html={data.weight} onChange={handleWeightChange} />
-					<ContentEditable className="record__time" ref={timeRef} html={data.created_at} onChange={handleDateChange} />
-					</div>
-					<div className="record__actions">
-						{isEditing ?
-							<FaCheck className="action action__edit" onClick={() => {
-									setIsEditing(!isEditing);
-									updateRecord(data._id);
-								}
-							} />
-							:
-							<FaPen className="action action__edit" onClick={() => setIsEditing(!isEditing)} />}
-						<FaTrash className="action action__delete" onClick={() =>deleteRecord(data._id)} />
+				<div className={isDeleted ? "record hidden" : "record"}>
+					<div className="record__box">
+						<div className={isEditing ? "record__info" : "record__info visible"}>
+							<span className="record__weight">{data.weight} kg</span>
+							<span className="record__time">{dayjs(data.created_at).locale("sl").format("D. MMM YYYY H:mm")}</span>
+						</div>
+						<div className={isEditing ? "record__edit visible" : "record__edit"}>
+						<ContentEditable className="record__weight" ref={weightRef} html={data.weight} onChange={handleWeightChange} />
+						<ContentEditable className="record__time" ref={timeRef} html={data.created_at} onChange={handleDateChange} />
+						</div>
+						<div className="record__actions">
+							{isEditing ?
+								<FaCheck className="action action__edit" onClick={() => {
+										setIsEditing(!isEditing);
+										updateRecord(data._id);
+									}
+								} />
+								:
+								<FaPen className="action action__edit" onClick={() => setIsEditing(!isEditing)} />}
+							<FaTrash className="action action__delete" onClick={() => deleteRecord(data._id)} />
+						</div>
 					</div>
 				</div>
 			</>

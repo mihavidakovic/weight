@@ -1,0 +1,52 @@
+/* purgecss start ignore */
+@tailwind  base;
+@tailwind  components;
+/* purgecss end ignore */
+@tailwind  utilities;
+
+
+
+/* Typography */
+
+.title {
+    @apply font-bold text-xl text-gray-800;
+}
+
+.subtitle {
+    @apply font-bold text-lg text-gray-800;
+}
+
+
+/* Box */
+
+.box {
+    @apply bg-white p-4 rounded-md shadow-md;
+}
+
+/* Inputs */
+
+.input {
+    @apply bg-white border border-gray-300 px-3 py-2 text-sm rounded outline-none transition;
+}
+
+.input:hover {
+    @apply border-gray-400;
+}
+
+.input:focus {
+    @apply border-gray-400;
+}
+
+/* Buttons */
+
+.btn {
+    @apply px-6 py-2 rounded text-sm font-bold text-white uppercase outline-none cursor-pointer transition;
+}
+
+.btn.btn-primary {
+    @apply bg-blue-600;
+}
+
+.btn.btn-primary:hover {
+    @apply bg-blue-700;
+}

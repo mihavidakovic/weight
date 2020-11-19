@@ -9,21 +9,40 @@ import Loader from "react-loader-spinner";
 import Record from "../components/Record"
 
 export default function Edit() {
-  const [weights, setWeights] = useState();
+	const [weights, setWeights] = useState();
+	const [page, setPage] = useState({
+		totalDocs: 0,
+		num: 0,
+		totalPages: 0,
+		hasPrevPage: true,
+		hasNextPage: true,
+		prevPage: null,
+		nextPage: null
+	});
 
-  function fetchData() {
-	 fetch("/api/weights")
-	  .then( response => {
-		if (!response.ok) { throw response }
-		return response.json()  //we only get here if there is no error
-	  })
-	  .then( json => {
-		setWeights(json.data)
-	  })
-	  .catch( err => {
-		console.log(err)
-	  });
-  }
+	async function fetchData(num) {
+		let url = "/api/weights?page=" + num;
+		await fetch(url)
+			.then(response => {
+				if (!response.ok) { throw response }
+				return response.json()  //we only get here if there is no error
+			})
+			.then(json => {
+				setWeights(json.data.docs)
+				setPage({
+					totalDocs: json.data.totalDocs,
+					num: json.data.page,
+					totalPages: json.data.totalPages,
+					hasPrevPage: json.data.hasPrevPage,
+					hasNextPage: json.data.hasNextPage,
+					prevPage: json.data.prevPage,
+					nextPage: json.data.nextPage
+				})
+			})
+			.catch(err => {
+				console.log(err)
+			});
+	}
 
   function deleteRecord(id) {
   	const url = "/api/weights/" + id; 
@@ -66,7 +85,38 @@ export default function Edit() {
 
 				<main className="edit">
 					<div className="container">
-						<h2>Edit records</h2>
+						<h2>Edit records ({page.totalDocs})</h2>
+						<div className="pagination">
+							<div className="pagination__box pagination__prev" onClick={() => handlePrevPage()}>
+								<FaArrowLeft />
+							</div>
+							<div className="pagination__pages">
+								{page.hasPrevPage ? (
+									<div className="pagination__box" onClick={() => handlePrevPage()}>
+										<span>{page.num - 1}</span>
+									</div>
+									)
+									:
+									""
+								}
+
+								<div className="pagination__box active">
+									<span>{page.num}</span>
+								</div>
+
+								{page.hasNextPage ? (
+									<div className="pagination__box" onClick={() => handleNextPage()}>
+										<span>{page.num + 1}</span>
+									</div>
+									)
+									:
+									""
+								}
+							</div>
+							<div className="pagination__box pagination__next" onClick={() => handleNextPage()}>
+								<FaArrowRight />
+							</div>
+						</div>
 						<div className="records">
 							{weights.map((record, i) => {
 								return (
