@@ -21,7 +21,6 @@ const purgecss = [
 module.exports = {
   plugins: [
     'tailwindcss',
-    purgecss,
     'postcss-preset-env',
   ],
   }
