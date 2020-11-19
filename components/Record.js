@@ -69,26 +69,26 @@ export default function Record(props) {
 	if (data) {
 		return (
 			<>
-				<div className={isDeleted ? "record hidden" : "record"}>
-					<div className="record__box">
-						<div className={isEditing ? "record__info" : "record__info visible"}>
-							<span className="record__weight">{data.weight} kg</span>
-							<span className="record__time">{dayjs(data.created_at).locale("sl").format("D. MMM YYYY H:mm")}</span>
+				<div className={isDeleted ? "record hidden" : "box mb-3 hover:shadow-lg transition"}>
+					<div className="group flex flex-row items-center">
+						<div className={isEditing ? "hidden" : "visible w-5/6 flex flex-col flex-shrink-0"}>
+							<span className="record__weight font-bold text-lg mb-1">{data.weight} kg</span>
+							<span className="record__time text-xs text-gray-500">{dayjs(data.created_at).locale("sl").format("D. MMM YYYY H:mm")}</span>
 						</div>
-						<div className={isEditing ? "record__edit visible" : "record__edit"}>
-						<ContentEditable className="record__weight" ref={weightRef} html={data.weight} onChange={handleWeightChange} />
-						<ContentEditable className="record__time" ref={timeRef} html={data.created_at} onChange={handleDateChange} />
+						<div className={isEditing ? "visible w-5/6 flex flex-col flex-shrink-0" : "hidden"}>
+							<ContentEditable className="font-bold text-lg mb-1" ref={weightRef} html={data.weight} onChange={handleWeightChange} />
+							<ContentEditable className="text-xs text-gray-500" ref={timeRef} html={data.created_at} onChange={handleDateChange} />
 						</div>
-						<div className="record__actions">
+						<div className={isEditing ? "record__actions w-1/6 flex flex-row items-center justify-between opacity-100" : "record__actions w-1/6 flex flex-row items-center justify-between opacity-0 group-hover:opacity-100"}>
 							{isEditing ?
-								<FaCheck className="action action__edit" onClick={() => {
+								<FaCheck className="text-green-500 hover:text-green-700 cursor-pointer transition" onClick={() => {
 										setIsEditing(!isEditing);
 										updateRecord(data._id);
 									}
 								} />
 								:
-								<FaPen className="action action__edit" onClick={() => setIsEditing(!isEditing)} />}
-							<FaTrash className="action action__delete" onClick={() => deleteRecord(data._id)} />
+								<FaPen className="text-gray-500 hover:text-gray-700 cursor-pointer transition" onClick={() => setIsEditing(!isEditing)} />}
+							<FaTrash className="text-red-500 hover:text-red-700 cursor-pointer transition" onClick={() => deleteRecord(data._id)} />
 						</div>
 					</div>
 				</div>

@@ -132,14 +132,15 @@ module.exports = {
       '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
       inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
       header: '0 2px 10px 0 rgba(0,0,0,.3)',
+      box: '0 2px 4px 0 rgba(0,0,0,.05), 0 4px 15px 0 rgba(0,0,0,.06)',
       none: 'none',
     },
     container: {
       center: true,
       padding: {
-        DEFAULT: '0',
-        sm: '0 1rem',
-        lg: '0 0rem',
+        DEFAULT: '1rem',
+        sm: '1rem',
+        lg: '0rem',
       },
     },
     cursor: {
@@ -186,7 +187,7 @@ module.exports = {
       ],
     },
     fontSize: {
-      xs: ['0.75rem', { lineHeight: '1rem' }],
+      xs: ['0.7rem', { lineHeight: '1rem' }],
       sm: ['0.875rem', { lineHeight: '1.25rem' }],
       base: ['1rem', { lineHeight: '1.5rem' }],
       lg: ['1.125rem', { lineHeight: '1.75rem' }],

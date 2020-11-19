@@ -60,8 +60,8 @@ function Graph(props) {
 
     return (
       <>
-        <div className="graph__head">
-          <h3>Weight graph</h3>
+        <div className="flex flex-row items-center justify-between mb-2">
+          <h3 className="title">Weight graph</h3>
           <select className="input" onChange={(e) => selectData(e)} value={selectedSpan}>
             <option value="all">All</option>
             <option value="7">7 days</option>
@@ -72,7 +72,7 @@ function Graph(props) {
             <option value="365">1 year</option>
           </select>
         </div>
-        <div className="graph__box">
+        <div className="box mb-4">
           <Line
             data={data}
             height={400}

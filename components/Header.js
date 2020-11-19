@@ -7,8 +7,8 @@ export default function Header() {
 	const router = useRouter();
 
 	return (
-		<header className="fixed w-full top-0 left-0 bg-gray-800 shadow-header">
-			<div className="container flex flex-row justify-between items-center py-4">
+		<header style={{padding: "1.125em 0", backgroundColor: "rgba(0,0,0,.8)", position: "fixed", width: "100%", left: 0, top: 0, zIndex: 999, backdropFilter: "blur(10px)", boxShadow: "0 2px 10px 0 rgba(0,0,0,.3)"}}>
+			<div className="container flex flex-row justify-between items-center">
 				<div className="logo cursor-pointer">
 					<Link href="/">
 						<div className="logo__content flex flex-row text-white">

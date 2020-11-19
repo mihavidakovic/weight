@@ -28,6 +28,7 @@ export default function Edit() {
 				return response.json()  //we only get here if there is no error
 			})
 			.then(json => {
+				console.log(json)
 				setWeights(json.data.docs)
 				setPage({
 					totalDocs: json.data.totalDocs,
@@ -62,7 +63,7 @@ export default function Edit() {
   }
 
   useEffect(() => {
-	fetchData()
+	fetchData(0)
   }, [])
 
   let data = weights;

@@ -20,7 +20,7 @@
 /* Box */
 
 .box {
-    @apply bg-white p-4 rounded-md shadow-md;
+    @apply bg-white px-4 py-4 rounded-md shadow-box;
 }
 
 /* Inputs */
@@ -40,7 +40,7 @@
 /* Buttons */
 
 .btn {
-    @apply px-6 py-2 rounded text-sm font-bold text-white uppercase outline-none cursor-pointer transition;
+    @apply px-8 py-3 rounded text-xs font-bold text-white uppercase outline-none cursor-pointer transition;
 }
 
 .btn.btn-primary {

@@ -42,32 +42,38 @@ export default function Statistics(props) {
     if (lostWeightWeek && allLostWeight && startWeight && currentWeight) {
         return (
             <>
-                <h3>Statistics</h3>
-                <div className="boxes boxes__two">
-                    <div className="box">
-                        <span className="box__title">{startWeight} kg</span>
-                        <span className="box__subtitle">Start weight</span>
+                <h3 className="title mb-2">Statistics</h3>
+                <div className="flex flex-row mb-4 relative">
+                    <div className="box w-1/2 mr-2 flex flex-col text-center">
+                        <span className="font-bold text-base mb-1">{startWeight} kg</span>
+                        <span className="text-xs text-gray-500">Start weight</span>
                     </div>
-                    <div className="box__icon">
+                    <div className="absolute inset-x-1/2 inset-y-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-white text-sm">
                         <FaAngleDoubleRight />
                     </div>
-                    <div className="box">
-                        <span className="box__title">{currentWeight} kg</span>
-                        <span className="box__subtitle">Current weight</span>
+                    <div className="box w-1/2 ml-2 flex flex-col text-center">
+                        <span className="font-bold text-base mb-1">{currentWeight} kg</span>
+                        <span className="text-xs text-gray-500">Current weight</span>
                     </div>
                 </div>
-                <div className="boxes boxes__three">
-                    <div className="box">
-                        <span className="box__title">{allLostWeight.toFixed(1)} kg</span>
-                        <span className="box__subtitle">Weight lost over-all</span>
+                <div className="flex flex-col lg:flex-row mb-6">
+                    <div className="box w-full lg:w-1/3 flex items-center justify-center">
+                        <div className="flex flex-col text-center py-3">
+                            <span className="font-bold text-2xl mb-1">{allLostWeight.toFixed(1)} kg</span>
+                            <span className="text-xs text-gray-500">Weight lost over-all</span>
+                        </div>
                     </div>
-                    <div className="box">
-                        <span className="box__title">{lostWeightWeek.toFixed(1)} kg</span>
-                        <span className="box__subtitle">Weight lost last week</span>
+                    <div className="box w-full lg:w-1/3 mx-0 lg:mx-4 my-4 lg:my-0 flex items-center justify-center">
+                        <div className="flex flex-col text-center py-3">
+                            <span className="font-bold text-2xl mb-1">{lostWeightWeek.toFixed(1)} kg</span>
+                            <span className="text-xs text-gray-500">Weight lost since last week</span>
+                        </div>
                     </div>
-                    <div className="box">
-                        <span className="box__title">{props.data.length}</span>
-                        <span className="box__subtitle">Days of logging weight</span>
+                    <div className="box w-full lg:w-1/3 flex items-center justify-center">
+                        <div className="flex flex-col text-center py-3">
+                            <span className="font-bold text-2xl mb-1">{props.data.length}</span>
+                            <span className="text-xs text-gray-500">Days of logging weight</span>
+                        </div>
                     </div>
                 </div>
             </>
