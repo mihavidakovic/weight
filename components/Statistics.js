@@ -59,13 +59,13 @@ export default function Statistics(props) {
         else if (num >= 25 && num <= 30) {
             setBmi({
                 number: num,
-                definition: "Obese"
+                definition: "Overweight"
             })
         }
         else if (num > 30) {
             setBmi({
                 number: num,
-                definition: "Overweight"
+                definition: "Obese"
             })
         }
     }
