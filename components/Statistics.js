@@ -19,9 +19,8 @@ export default function Statistics(props) {
     function getLostWeight() {
         let newItems = [];
         for (var i = props.data.length - 1; i >= 0; i--) {
-            if ((dayjs(props.data[i].created_at).isBetween(dayjs().subtract(7, 'day'), dayjs()))) {
+            (dayjs(props.data[i].created_at).isBetween(dayjs().subtract(7, 'day'), dayjs()))
                 newItems.push(props.data[i])
-            }
         }
         setLostWeightWeek(newItems[0].weight - [...newItems].pop().weight)
     }
