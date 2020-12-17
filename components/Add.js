@@ -45,21 +45,21 @@ export default function Add(props) {
 	}
 
 	return (
-		<div className="add">
-			<h3>Add weight</h3>
-			<div className="add__form">
-				<div className="form">
-					<input type="number" value={weight} placeholder="96kg" className="input" onChange={handleChange} />
-					<div className="btn btn-primary" onClick={() => {
-						submit(weight)
-						handleAdded()
-					}}>
-						Add
+		<>
+			<div className="add flex flex-col mb-4">
+				<h3 className="title mb-2">Add weight</h3>
+				<div className="add__form box flex flex-col">
+					<div className="flex flex-row items-center">
+						<input type="number" value={weight} placeholder="96kg" className="input w-full mr-2" onChange={handleChange} />
+						<div className="btn btn-primary ml-2" onClick={() => submit(weight)}>
+							Add
+						</div>
 					</div>
+					<Message type="success" number={addedWeight} visible={status} />
 				</div>
 				<Message type="success" number={addedWeight} visible={status} />
 			</div>
-		</div>
+		</>
 	)
 }
 

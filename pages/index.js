@@ -49,13 +49,19 @@ export default function Home() {
 					<meta name="theme-color" content="#222222" />
 				</Head>
 
+<<<<<<< HEAD
 				<main className="home">
 					<div className="container">
 						<div className="sidebar">
+=======
+				<main className="mt-20">
+					<div className="container flex flex-col lg:flex-row-reverse">
+						<div className="sidebar w-full lg:w-2/5 ml-0 lg:ml-4 mb-6">
+>>>>>>> dev
 							<Add isAdded={handleAdd} />
 							<Records data={data} />
 						</div>
-						<div className="main">
+						<div className="main w-full mr-0 lg:mr-4 mb-4">
 							<div className="statistics">
 								<Statistics data={data} />
 							</div>
@@ -83,16 +89,14 @@ export default function Home() {
 					<meta name="theme-color" content="#222222" />
 				</Head>
 
-				<main className="home">
-					<div className="container">
-						<Loader
-							className="loading__spinner"
-							type="Rings"
-							color="#888"
-							height={100}
-							width={100}
-						/>
-					</div>
+				<main className="mt-36 relative">
+					<Loader
+						className="absolute inset-x-1/2  transform -translate-x-1/2 w-24 h-24"
+						type="Rings"
+						color="#888"
+						height={96}
+						width={96}
+					/>
 			</main>
 			</>
 

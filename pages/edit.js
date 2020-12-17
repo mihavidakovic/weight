@@ -11,6 +11,7 @@ import Record from "../components/Record"
 export default function Edit() {
 	const [weights, setWeights] = useState();
 	const [page, setPage] = useState({
+		totalDocs: 0,
 		num: 0,
 		totalPages: 0,
 		hasPrevPage: true,
@@ -27,8 +28,10 @@ export default function Edit() {
 				return response.json()  //we only get here if there is no error
 			})
 			.then(json => {
+				console.log(json)
 				setWeights(json.data.docs)
 				setPage({
+					totalDocs: json.data.totalDocs,
 					num: json.data.page,
 					totalPages: json.data.totalPages,
 					hasPrevPage: json.data.hasPrevPage,
@@ -59,9 +62,9 @@ export default function Edit() {
 			});
 	}
 
-	useEffect(() => {
-		fetchData(page.num)
-	}, [])
+  useEffect(() => {
+	fetchData(0)
+  }, [])
 
 	function handlePrevPage() {
 		if(page.hasPrevPage) {
@@ -102,7 +105,7 @@ export default function Edit() {
 
 				<main className="edit">
 					<div className="container">
-						<h2>Edit records</h2>
+						<h2>Edit records ({page.totalDocs})</h2>
 						<div className="pagination">
 							<div className="pagination__box pagination__prev" onClick={() => handlePrevPage()}>
 								<FaArrowLeft />

@@ -1,5 +1,5 @@
 import { useState, setState, useEffect } from "react";
-import {Line} from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import dayjs from "dayjs"
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
@@ -7,28 +7,48 @@ import Loader from "react-loader-spinner";
 function Graph(props) {
   const [weights, setWeights] = useState();
   const [dates, setDates] = useState();
+  const [selectedWeight, setSelectedWeight] = useState()
+  const [selectedDates, setSelectedDates] = useState()
+  const [selectedSpan, setSelectedSpan] = useState("all")
+
+  function sortData() {
+    let newWeights = [];
+    for (var i = props.data.length - 1; i >= 0; i--) {
+      newWeights.push(Object.values(props.data[i])[1])
+    }
+    setWeights(newWeights)
+    setSelectedWeight(newWeights)
+
+    let newDates = [];
+    for (var i = props.data.length - 1; i >= 0; i--) {
+      newDates.push(dayjs(Object.values(props.data[i])[2]).format("D. M."))
+    }
+    setDates(newDates)
+    setSelectedDates(newDates)
+  }
+
 
   useEffect(() => {
-    let newWeights = [];
-      for (var i = props.data.length - 1; i >= 0; i--) {
-        newWeights.push(Object.values(props.data[i])[1])
-      }
-      setWeights(newWeights)
+    sortData()
+  }, [props.data])
 
-      let newDates = [];
-      for (var i = props.data.length - 1; i >= 0; i--) {
-        newDates.push(dayjs(Object.values(props.data[i])[2]).format("D. M."))
-      }
-      setDates(newDates)
-      console.log(props.data)
-}, [props.data])
+  function selectData(event) {
+    setSelectedSpan(event.target.value)
+    let nW = weights;
+    let nD = dates; 
+    nW = nW.slice(- event.target.value);
+    nD = nD.slice(- event.target.value);
+    setSelectedWeight(nW)
+    setSelectedDates(nD)
+    console.log(nW)
+  }
 
-  if (weights && dates) {
+  if (selectedDates && selectedWeight) {
     const data = {
-      labels: dates,
+      labels: selectedDates,
       datasets: [{
         label: 'kg',
-        data: weights,
+        data: selectedWeight,
         fill: true,
         lineTension: 0,
         backgroundColor: 'rgba(32, 112, 229, 0.2)',
@@ -40,8 +60,19 @@ function Graph(props) {
 
     return (
       <>
-        <h3>Weight graph</h3>
-        <div className="graph__box">
+        <div className="flex flex-row items-center justify-between mb-2">
+          <h3 className="title">Weight graph</h3>
+          <select className="input" onChange={(e) => selectData(e)} value={selectedSpan}>
+            <option value="all">All</option>
+            <option value="7">7 days</option>
+            <option value="14">14 days</option>
+            <option value="30">1 month</option>
+            <option value="90">3 months</option>
+            <option value="180">6 months</option>
+            <option value="365">1 year</option>
+          </select>
+        </div>
+        <div className="box mb-4">
           <Line
             data={data}
             height={400}
@@ -61,15 +92,15 @@ function Graph(props) {
 
   } else {
     return (
-    <div style={{width: "100%", height: "350px", position: "relative"}}>
-      <Loader
-        className="loading__spinner"
-        type="Rings"
-        color="#888"
-        height={100}
-        width={100}
+      <div style={{ width: "100%", height: "350px", position: "relative" }}>
+        <Loader
+          className="loading__spinner"
+          type="Rings"
+          color="#888"
+          height={100}
+          width={100}
         />
-    </div>
+      </div>
     )
   }
 }
