@@ -22,6 +22,8 @@ export default function Statistics(props) {
             (dayjs(props.data[i].created_at).isBetween(dayjs().subtract(7, 'day'), dayjs()))
                 newItems.push(props.data[i])
         }
+        console.log(newItems[0].weight)
+        console.log([...newItems].pop().weight)
         setLostWeightWeek(newItems[0].weight - [...newItems].pop().weight)
     }
     function getAllLostWeight() {

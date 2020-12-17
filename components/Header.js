@@ -1,11 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from "next/router";
-<<<<<<< HEAD
-import { FaBalanceScale, FaBalanceScaleLeft } from 'react-icons/fa';
-import { RiScales2Line } from 'react-icons/ri';
-=======
 import { RiScales2Line } from "react-icons/ri"
->>>>>>> dev
 
 
 export default function Header() {
@@ -16,15 +11,9 @@ export default function Header() {
 			<div className="container flex flex-row justify-between items-center">
 				<div className="logo cursor-pointer">
 					<Link href="/">
-<<<<<<< HEAD
-						<div className="logo__content">
-							<RiScales2Line></RiScales2Line>
-							<span>WeightApp</span>
-=======
 						<div className="logo__content flex flex-row text-white">
 							<RiScales2Line className="mr-2 text-2xl"></RiScales2Line>
 							<span className="font-bold">WeightApp</span>
->>>>>>> dev
 						</div>
 					</Link>
 				</div>

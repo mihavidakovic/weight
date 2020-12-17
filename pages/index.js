@@ -49,15 +49,9 @@ export default function Home() {
 					<meta name="theme-color" content="#222222" />
 				</Head>
 
-<<<<<<< HEAD
-				<main className="home">
-					<div className="container">
-						<div className="sidebar">
-=======
 				<main className="mt-20">
 					<div className="container flex flex-col lg:flex-row-reverse">
 						<div className="sidebar w-full lg:w-2/5 ml-0 lg:ml-4 mb-6">
->>>>>>> dev
 							<Add isAdded={handleAdd} />
 							<Records data={data} />
 						</div>

@@ -8,7 +8,6 @@ import ContentEditable from 'react-contenteditable'
 export default function Record(props) {
 	const [isDeleted, setIsDeleted] = useState(false);
 	const [isEditing, setIsEditing] = useState(false);
-	const [isDeleted, setIsDeleted] = useState(false);
 	const [data, setData] = useState();
 	const weightRef = useRef(null);
 	const timeRef = useRef(null);
